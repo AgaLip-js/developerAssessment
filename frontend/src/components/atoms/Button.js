@@ -12,7 +12,8 @@ const StyledButton = styled.button`
   color: #fff;
   border: solid 1px #da7c0c;
   background: rgb(242, 162, 44);
-  margin: 5px 10px;
+  padding: 5px 10px;
+  margin: auto;
   width: fit-content;
 
   :hover {

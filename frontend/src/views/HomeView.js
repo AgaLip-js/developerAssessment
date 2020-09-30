@@ -15,7 +15,8 @@ import { paths } from "../_constants/paths";
 const StyledWrapper = styled.div`
   height: 100vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   padding: 20px;
   flex-direction: column;
 `;
@@ -52,7 +53,9 @@ const StyledTableContainer = styled.div`
   justify-content: center;
   height: 100vh;
 `;
-const StyledPath = styled.div``;
+const StyledPath = styled.div`
+  margin-top: 20px;
+`;
 
 const HomeView = () => {
   const { nationalities, selectedNationality } = useSelector(({ student }) => ({
@@ -75,10 +78,10 @@ const HomeView = () => {
 
   return (
     <StyledWrapper>
+      <Button onClick={handleInitStudents}>Init Students</Button>
       <StyledPath>
         <StyledLink to={paths.new}> Add New Student</StyledLink>
       </StyledPath>
-      <Button onClick={handleInitStudents}>Init Students</Button>
       <StyledTableContainer>
         {selectedNationality && (
           <StyledDropdownList
