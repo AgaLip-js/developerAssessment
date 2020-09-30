@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Button from "../components/atoms/Button";
 import StudentsTable from "../components/molecules/StudentsTable";
+import {
+  getStudentsNationalities,
+  handleSelectNationality,
+  initStudents,
+} from "../redux/actions/studentActions";
+import { studentsInit } from "../_constants/model";
 import { paths } from "../_constants/paths";
 
 const StyledWrapper = styled.div`
@@ -47,17 +55,45 @@ const StyledTableContainer = styled.div`
 const StyledPath = styled.div``;
 
 const HomeView = () => {
+  const { nationalities, selectedNationality } = useSelector(({ student }) => ({
+    nationalities: student.nationalities,
+    selectedNationality: student.selectedNationality,
+  }));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getStudentsNationalities());
+  }, [dispatch]);
+
+  const handleInitStudents = () => {
+    if (!nationalities.length) {
+      dispatch(initStudents(studentsInit));
+    } else {
+      alert("You have already init dataset");
+    }
+  };
+
   return (
     <StyledWrapper>
       <StyledPath>
         <StyledLink to={paths.new}> Add New Student</StyledLink>
       </StyledPath>
+      <Button onClick={handleInitStudents}>Init Students</Button>
       <StyledTableContainer>
-        <StyledDropdownList>
-          <StyledOption>a</StyledOption>
-          <StyledOption>b</StyledOption>
-          <StyledOption>c</StyledOption>
-        </StyledDropdownList>
+        {selectedNationality && (
+          <StyledDropdownList
+            name="Nationalities"
+            value={selectedNationality}
+            onChange={(e) => dispatch(handleSelectNationality(e.target.value))}
+          >
+            {nationalities.map((n) => (
+              <StyledOption key={n._id} value={n.nationality}>
+                {n.nationality}
+              </StyledOption>
+            ))}
+          </StyledDropdownList>
+        )}
+
         <StudentsTable />
       </StyledTableContainer>
     </StyledWrapper>

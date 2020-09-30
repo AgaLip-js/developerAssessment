@@ -12,18 +12,22 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //ROUTES
-// const routes = require("./");
-// app.use("/", routes);
+const studentsRoute = require("./routes/students");
+app.use("/students", studentsRoute);
 
 app.get("/", (req, res) => {
   res.send("home");
 });
-
+const database = process.env.DB_CONNECTION;
 mongoose.connect(
-  process.env.DB_CONNECTION,
+  database,
   { useNewUrlParser: true, useUnifiedTopology: true },
-  () => {
-    console.log("connected to DB");
+  (err) => {
+    if (err) {
+      console.log("DB Error!");
+    } else {
+      console.log("connected to DB");
+    }
   }
 );
 
