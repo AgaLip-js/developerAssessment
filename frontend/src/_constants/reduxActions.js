@@ -1,1 +1,0 @@
-export const INIT_WORKERS = "INIT_WORKERS";

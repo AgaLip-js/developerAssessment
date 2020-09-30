@@ -5,8 +5,9 @@ import store from "./redux/store/store";
 import GlobalStyle from "./theme/GlobalStyle";
 import { paths } from "./_constants/paths";
 import { Route, Switch, Redirect } from "react-router";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 import HomeView from "./views/HomeView";
+import NewView from "./views/NewView";
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -23,8 +24,13 @@ function App() {
       <StyledWrapper>
         <BrowserRouter>
           <Switch>
-            <Route exact path={'/'} render={() => <Redirect to={paths.home} />} />
+            <Route
+              exact
+              path={"/"}
+              render={() => <Redirect to={paths.home} />}
+            />
             <Route exact path={paths.home} component={HomeView} />
+            <Route exact path={paths.new} component={NewView} />
           </Switch>
         </BrowserRouter>
       </StyledWrapper>
