@@ -12,10 +12,12 @@ const StyledWrapper = styled.div`
   background: #1383c5;
   margin: 20px;
   padding: 20px;
+  width: 350px;
 `;
 const StyledRow = styled.p`
   color: white;
 `;
+const StyledBox = styled.div``;
 
 const sortOptions = ["none", "ASCENDING", "DESCENDING"];
 
@@ -72,15 +74,17 @@ const StudentsTable = () => {
   }, [students, sortOption]);
 
   return (
-    <StyledWrapper>
-      {sortedStudents &&
-        sortedStudents.map(({ _id, firstName, lastName, age }) => (
-          <React.Fragment key={_id}>
-            <StyledRow>{`${firstName} `}</StyledRow>
-            <StyledRow>{`${lastName}`}</StyledRow>
-            <StyledRow>{`(${age})`}</StyledRow>
-          </React.Fragment>
-        ))}
+    <StyledBox>
+      <StyledWrapper>
+        {sortedStudents &&
+          sortedStudents.map(({ _id, firstName, lastName, age }) => (
+            <React.Fragment key={_id}>
+              <StyledRow>{firstName}</StyledRow>
+              <StyledRow>{lastName}</StyledRow>
+              <StyledRow>{age}</StyledRow>
+            </React.Fragment>
+          ))}
+      </StyledWrapper>
       <Button
         onClick={() => {
           setSortOption(sortOptionByValue(sortOption));
@@ -88,7 +92,7 @@ const StudentsTable = () => {
       >
         Sort
       </Button>
-    </StyledWrapper>
+    </StyledBox>
   );
 };
 

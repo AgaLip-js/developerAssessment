@@ -18,13 +18,9 @@ const StyledButton = styled.button`
 
   :hover {
     background: #f47c20;
-    background: linear, left top, left bottom, from(#f88e11), to(#f06015);
-    background: top, #f88e11, #f06015;
   }
   :active {
     color: #fff;
-    background: linear, left top, left bottom, from(#f47a20), to(#faa51a);
-    background: top, #f47a20, #faa51a;
     top: 1px;
     position: relative;
   }
