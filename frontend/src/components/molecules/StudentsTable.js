@@ -67,7 +67,7 @@ const StudentsTable = () => {
 
   useEffect(() => {
     if (students.length) {
-      setSortedStudents(getSortedStudents(students, sortOption));
+      setSortedStudents([...getSortedStudents(students, sortOption)]);
     }
   }, [students, sortOption]);
 
