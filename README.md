@@ -1,7 +1,7 @@
 # developerAssessment
 
 Recruitment task realized for an internship. This is NodeJS application that uses React.
-<hr>
+<br>
 
 I used NodeJS, Express and MongoDB to create REST API. I used React and Redux to build the user interface. 
 
