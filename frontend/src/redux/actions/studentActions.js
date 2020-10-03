@@ -73,6 +73,7 @@ export const addNewStudent = (student) => async (dispatch) => {
       _id: data._id,
       nationality: data.nationality,
     };
+    console.log(data);
     dispatch({
       type: ADD_NEW_STUDENT,
       payload: {

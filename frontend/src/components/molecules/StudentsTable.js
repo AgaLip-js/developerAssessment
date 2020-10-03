@@ -19,36 +19,36 @@ const StyledRow = styled.p`
 `;
 const StyledBox = styled.div``;
 
-const sortOptions = ["none", "ASCENDING", "DESCENDING"];
-
-function compare(a, b) {
-  if (a.firstName < b.firstName) {
-    return -1;
-  }
-  if (a.firstName > b.firstName) {
-    return 1;
-  }
-  return 0;
-}
-
-const getSortedStudents = (array, option) => {
-  switch (option) {
-    case sortOptions[0]:
-      return array;
-    case sortOptions[1]:
-      return array.sort(compare);
-    case sortOptions[2]:
-      return array.reverse(compare);
-    default:
-      return array;
-  }
-};
-
 const StudentsTable = () => {
   const { selectedNationality, students } = useSelector(({ student }) => ({
     students: student.students,
     selectedNationality: student.selectedNationality,
   }));
+  const sortOptions = ["none", "ASCENDING", "DESCENDING"];
+
+  function compare(a, b) {
+    if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) {
+      return -1;
+    }
+    if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  }
+
+  const getSortedStudents = (array, option) => {
+    switch (option) {
+      case sortOptions[0]:
+        return array;
+      case sortOptions[1]:
+        console.log(array.sort(compare));
+        return array.sort(compare);
+      case sortOptions[2]:
+        return array.reverse(compare);
+      default:
+        return array;
+    }
+  };
 
   const [sortOption, setSortOption] = useState(sortOptions[0]);
   const [sortedStudents, setSortedStudents] = useState(students);

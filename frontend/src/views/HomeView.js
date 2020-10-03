@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../components/atoms/Button";
 import StudentsTable from "../components/molecules/StudentsTable";
+import NewTable from "../components/molecules/NewTable";
 import {
   getStudentsNationalities,
   handleSelectNationality,
@@ -97,7 +98,8 @@ const HomeView = () => {
           </StyledDropdownList>
         )}
 
-        <StudentsTable />
+        {/* <StudentsTable /> */}
+        <NewTable />
       </StyledTableContainer>
     </StyledWrapper>
   );
